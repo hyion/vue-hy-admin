@@ -1,0 +1,114 @@
+html,
+body,
+p,
+input,
+textarea,
+button,
+div,
+span {
+  font-family: "eafont", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+.container {
+  transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.3s;
+}
+
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+}
+
+.page-leave-active {
+  opacity: 0;
+  transform: translate(-50px, 0);
+}
+
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate(30px, 0);
+}
+
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  transform: translate(-30px, 0);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  // font-size: 18px;
+  letter-spacing: 0.4px;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  background: #fff;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #dbdbdb;
+}
+
+body::-webkit-scrollbar-track {
+  background: #f6f6f6;
+}
+
+:root {
+  --colorBar: #50bcb6;
+  --colorActive: #0084ff;
+  --colorComment: #ef6d57;
+  --colorDefault: #24292e;
+  --colorTitle: #2c3e50;
+  --colorGreen: #26a69a;
+}
+
+// 改变鼠标选中文字的样式
+::selection {
+  background: var(--colorGreen) !important;
+  color: #ffffff !important;
+}
+
+.markdown-body blockquote {
+  padding: 10px !important;
+  background: rgb(245, 247, 249);
+  border-left-color: var(--colorBar) !important;
+  border-radius: 4px;
+}
+
+/*滚动条样式*/
+.markdown-body pre::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 10px; /*高宽分别对应横竖滚动条的尺寸*/
+  height: 10px;
+}
+.markdown-body pre::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  background: #dbdbdb;
+}
+.markdown-body pre::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  border-radius: 0;
+  background: #f6f6f6;
+}
