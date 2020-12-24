@@ -39,15 +39,15 @@ const viteConfig: UserConfig = {
   },
 
   cssPreprocessOptions: {
-    
+    sass: {
+      includePaths: ['path/to/sass/deps']
+    }
   },
 
   optimizeDeps: {
-    include: []
+    include: ['axios']
   },
-
-  proxy: createProxy(VITE_PROXY)
+  // proxy: createProxy(VITE_PROXY)
 }
 
 export default viteConfig
-
