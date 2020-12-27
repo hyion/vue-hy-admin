@@ -4,30 +4,60 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import type { AppRouteRecordRaw } from './types'
 import { scrollBehavior } from './scrollBehavior'
 
+export const LAYOUT = () => import('/@/layouts/index.vue');
+const loadView = (view: string) => (): any => import(`/@/views/${view}/index.vue`);
+
 export const hashRouter = createWebHashHistory()
 
-const basicRoutes = [
-  {
-    path: '/',
-    name: 'Root',
-    redirect: '/home',
-    meta: {
-      title: 'Root',
-    },
-  },
+export const constantRouterMap = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('/@/views/login/Login.vue'),
-    meta: {
-      title: '登录',
-    },
-  }
+    component: loadView('Login'),
+    hidden: true
+  },
+  {
+    path: '/auth-redirect',
+    component: () => import('/@/views/Login/authredirect.vue'),
+    hidden: true
+  },
+  {
+    path: '',
+    component: LAYOUT,
+    redirect: 'dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        component: loadView('Dashboard'),
+        name: 'Dashboard',
+        meta: {title: 'dashboard', icon: 'dashboard', noCache: true}
+      }
+    ]
+  },
 ]
+
+// const basicRoutes = [
+//   {
+//     path: '/',
+//     name: 'Root',
+//     redirect: '/home',
+//     meta: {
+//       title: 'Root',
+//     },
+//   },
+//   {
+//     path: '/login',
+//     name: 'Login',
+//     component: () => import('/@/views/Login/Login.vue'),
+//     meta: {
+//       title: '登录',
+//     },
+//   }
+// ]
 
 const router = createRouter({
   history: hashRouter,
-  routes: basicRoutes as RouteRecordRaw[],
+  routes: constantRouterMap as RouteRecordRaw[],
   strict: true,
   scrollBehavior: scrollBehavior,
 })

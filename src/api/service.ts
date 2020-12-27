@@ -6,8 +6,7 @@ import axios from 'axios' // 引用axios
 
 // create an axios instance
 const request = axios.create({
-  // baseURL: 'https://activity.mongacloud.com/',
-  baseURL: 'https://dev-activity.mongacloud.com/',
+  baseURL: 'https://dev-activit.com/',
   withCredentials: false, // send cookies when cross-domain requests
   timeout: 5000 // request timeout
 })

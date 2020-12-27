@@ -4,4 +4,4 @@ declare module '*.vue' {
   export default component
 }
 
-declare module 'marked'
+declare module 'nprogress'

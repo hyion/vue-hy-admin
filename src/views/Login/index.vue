@@ -5,7 +5,7 @@
         :model="formData"
         :rules="rules"
         ref="formRef"
-        label-width="100px"
+        label-width="0"
         class="login-form"
         size="medium"
       >
@@ -32,6 +32,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref, unref } from 'vue';
+
 export default defineComponent({
   setup() {
     const formRef = ref<any>(null);
@@ -64,63 +65,31 @@ export default defineComponent({
   height: 100vh;
   background: linear-gradient(to bottom right, #50a3a2, #53e3a6);
   overflow: hidden;
-}
-.login-wrap {
-  width: 330px;
-  margin: auto;
-  margin-top: 200px;
-}
-.menu-tab {
-  text-align: center;
-  li {
-    display: inline-block;
-    width: 88px;
-    line-height: 36px;
-    font-size: 14px;
-    color: #fff;
-    border-radius: 2px;
-    transition: all 0.5s;
-    cursor: pointer;
-  }
-  .current {
-    background: rgba(0, 0, 0, 0.1);
-  }
-}
-.login-form {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 300px;
-  padding: 40px 50px 24px;
-  background: #fff;
-  border-radius: 10px;
-  text-align: center;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  -webkit-box-shadow: 0 2px 10px #e6e6e6;
-  box-shadow: 0 2px 10px #e6e6e6;
-  z-index: 9;
-  label {
-    display: block;
-    font-size: 14px;
-    color: #000;
-    text-align: left;
-  }
-  .title {
-    font-size: 22px;
-    color: #0b9aff;
-    letter-spacing: 2px;
-    margin: 10px 0 24px;
-  }
-  .item-form {
-    margin-bottom: 13px;
-  }
-  .block {
-    display: block;
-    width: 100%;
-  }
-  .login-btn {
-    margin-top: 9px;
+  .login-form {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 400px;
+    padding: 40px 50px 24px;
+    background: #fff;
+    border-radius: 10px;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 2px 10px #e6e6e6;
+    z-index: 9;
+    .title {
+      font-size: 22px;
+      color: #0b9aff;
+      letter-spacing: 2px;
+      margin: 10px 0 24px;
+    }
+    .block {
+      display: block;
+      width: 100%;
+    }
+    .login-btn {
+      margin-top: 9px;
+    }
   }
 }
 </style>
