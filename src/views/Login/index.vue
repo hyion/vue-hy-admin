@@ -10,8 +10,8 @@
         size="medium"
       >
         <div class="title">欢迎来到后台管理系统</div>
-        <el-form-item prop="account" class="item-form">
-          <el-input v-model="formData.account" placeholder="请输入账号"></el-input>
+        <el-form-item prop="username" class="item-form">
+          <el-input v-model="formData.username" placeholder="请输入账号"></el-input>
         </el-form-item>
         <el-form-item prop="password" class="item-form">
           <el-input
@@ -32,22 +32,30 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref, unref } from 'vue';
+import { Login } from '/@/api';
+import { useMessage } from '/@/hooks/useMessage';
 
 export default defineComponent({
   setup() {
     const formRef = ref<any>(null);
     const formData = reactive({
-      account: '',
+      username: '',
       password: '',
     });
     const rules = reactive({
-      account: [{ required: true, message: '请填写用户名', trigger: 'blur' }],
+      username: [{ required: true, message: '请填写用户名', trigger: 'blur' }],
       password: [{ required: true, message: '请填写密码', trigger: 'blur' }],
     });
+
+    const { notification } = useMessage();
 
     const submit = () => {
       const form = unref(formRef);
       if (!form) return;
+      Login(formData).then((res) => {
+        console.log(res);
+        notification('success', '登录成功');
+      });
     };
 
     return {

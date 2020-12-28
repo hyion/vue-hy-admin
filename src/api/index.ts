@@ -1,9 +1,10 @@
 import Service from './service'
+import { LoginParams } from './types'
 
-export function articleList(data?: any) {
+export function Login(data: LoginParams) {
   return Service({
-    url: data ? 'article/' : `article/?from=list`,
-    method: 'get',
+    url: 'login',
+    method: 'post',
     data: data
   })
 }
