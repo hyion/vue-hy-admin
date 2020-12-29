@@ -2,7 +2,10 @@ import router from './index'
 // import { RouteLocationNormalized, Router } from 'vue-router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-import settings from '../settings'
+import settings from '../settings';
+import { useStore } from '/@/store';
+
+const store = useStore()
 
 NProgress.configure({showSpinner: false});
 
@@ -16,8 +19,14 @@ const getPageTitle = (key: string) => {
 
 router.beforeEach(async (to, from, next) => {
   NProgress.start()
-  if (false) {
+  if (store.state.token) {
     console.log(from)
+    if (to.path === '/login') {
+      next({path: '/'})
+      NProgress.done();
+    } else {
+      next()
+    }
   } else {
     if (whiteNameList.indexOf(to.path) !== -1) { // 在免登录白名单，直接进入
       next()

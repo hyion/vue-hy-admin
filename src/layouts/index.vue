@@ -1,10 +1,15 @@
 <template>
-  <div>layouts</div>
+  <div class="app-wrapper">
+    <Sidebar class="sidebar-container" />
+  </div>
 </template>
 
-<script>
-export default {};
-</script>
+<script lang="ts">
+import { defineComponent } from 'vue';
+import Sidebar from './components/Sidebar/index.vue';
 
-<style>
-</style>
+export default defineComponent({
+  components: { Sidebar },
+  setup() {},
+});
+</script>

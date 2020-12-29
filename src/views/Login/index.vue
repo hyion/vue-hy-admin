@@ -34,6 +34,8 @@
 import { defineComponent, reactive, ref, unref } from 'vue';
 import { Login } from '/@/api';
 import { useMessage } from '/@/hooks/useMessage';
+import { useStore } from '/@/store';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   setup() {
@@ -48,12 +50,17 @@ export default defineComponent({
     });
 
     const { notification } = useMessage();
+    const store = useStore();
+    const router = useRouter();
 
     const submit = () => {
       const form = unref(formRef);
       if (!form) return;
-      Login(formData).then((res) => {
+      Login(formData).then((res: any) => {
         console.log(res);
+        const data = res.token;
+        store.action.updateToken(data);
+        router.push('/');
         notification('success', '登录成功');
       });
     };

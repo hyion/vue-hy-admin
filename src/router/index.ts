@@ -36,25 +36,6 @@ export const constantRouterMap = [
   },
 ]
 
-// const basicRoutes = [
-//   {
-//     path: '/',
-//     name: 'Root',
-//     redirect: '/home',
-//     meta: {
-//       title: 'Root',
-//     },
-//   },
-//   {
-//     path: '/login',
-//     name: 'Login',
-//     component: () => import('/@/views/Login/Login.vue'),
-//     meta: {
-//       title: '登录',
-//     },
-//   }
-// ]
-
 const router = createRouter({
   history: hashRouter,
   routes: constantRouterMap as RouteRecordRaw[],
