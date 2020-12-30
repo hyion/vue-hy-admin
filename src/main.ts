@@ -6,7 +6,7 @@ import router, { setupRouter } from '/@/router'
 
 import ElementPlus from 'element-plus'
 import 'element-plus/lib/theme-chalk/index.css'
-import './styles/index.scss'
+import '/@/styles/index.scss'
 
 import '/@/router/interceptor'
 
