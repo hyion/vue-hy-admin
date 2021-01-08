@@ -1,6 +1,12 @@
 <template>
   <div class="navbar">
     <Breadcrumb class="breadcrumb-container" />
+
+    <div class="right-menu">
+      <div class="avatar-wrapper">
+        <i class="el-icon-user-solid"></i>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -23,8 +29,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+$border-1px: 1px solid rgba(7, 17, 27, 0.1);
+
 .navbar {
-  height: 50px;
+  height: 45px;
   overflow: hidden;
   position: relative;
   background: #fff;
@@ -32,6 +40,31 @@ export default defineComponent({
 
   .breadcrumb-container {
     float: left;
+  }
+
+  .avatar-container {
+    margin-right: 30px;
+
+    .avatar-wrapper {
+      float: right;
+      height: 100%;
+      line-height: 50px;
+      margin-top: 5px;
+      position: relative;
+    }
+  }
+
+  .right-menu {
+    float: right;
+    height: 100%;
+    line-height: 45px;
+    margin-right: 20px;
+    .avatar-wrapper {
+      color: #666;
+      cursor: pointer;
+      // border: $border-1px;
+      // border-radius: 50%;
+    }
   }
 }
 </style>

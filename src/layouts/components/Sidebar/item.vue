@@ -1,6 +1,6 @@
 <template>
   <div class="menu-wrapper">
-    <el-menu-item :index="item.path">
+    <el-menu-item :index="item.path" @click="resolvePath(item.path)">
       <i :class="item.icon"></i>
       <span>{{ item.title }}</span>
     </el-menu-item>
@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-// import { RouteConfig } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { AppRouteRecordRaw } from '/@/router/types';
 
 export default defineComponent({
@@ -25,15 +25,18 @@ export default defineComponent({
     },
   },
   setup() {
-    // const resolvePath = (routePath: string) => {
-    //   // if (this.isExternalLink(routePath)) {
-    //   //   return routePath;
-    //   // }
-    //   return path.resolve(props.basePath, routePath);
-    // };
+    const router = useRouter();
+    const resolvePath = (routePath: string) => {
+      console.log(routePath);
+      router.push(routePath);
+      // if (this.isExternalLink(routePath)) {
+      //   return routePath;
+      // }
+      // return path.resolve(props.basePath, routePath);
+    };
 
     return {
-      // resolvePath,
+      resolvePath,
     };
   },
 });

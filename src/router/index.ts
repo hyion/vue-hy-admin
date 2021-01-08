@@ -30,7 +30,37 @@ export const constantRouterMap = [
         path: 'dashboard',
         component: loadView('Dashboard'),
         name: 'Dashboard',
-        meta: {title: 'dashboard', icon: 'dashboard', noCache: true}
+        meta: {title: '首页', icon: 'dashboard', noCache: true}
+      },
+      {
+        path: 'myself',
+        component: loadView('AboutMe'),
+        name: 'AboutMe',
+        meta: {title: '关于我', icon: 'dashboard', noCache: true}
+      },
+      {
+        path: 'article',
+        component: loadView('Article'),
+        name: 'Article',
+        meta: {title: '文章列表', icon: 'dashboard', noCache: true}
+      },
+      {
+        path: 'setting',
+        component: loadView('Sett'),
+        name: 'Setting',
+        meta: {title: '设置', icon: 'dashboard', noCache: true}
+      },
+      {
+        path: 'envelope',
+        component: loadView('Envelope'),
+        name: 'Envelope',
+        meta: {title: '备忘录', icon: 'dashboard', noCache: true}
+      },
+      {
+        path: 'comment',
+        component: loadView('Comment'),
+        name: 'Comment',
+        meta: {title: '评论信息', icon: 'dashboard', noCache: true}
       }
     ]
   },

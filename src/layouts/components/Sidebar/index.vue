@@ -22,9 +22,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from 'vue';
+import { defineComponent, reactive, toRefs, onMounted } from 'vue';
 import variable from './variable';
 import SidebarItem from './item.vue';
+import { useRoute } from 'vue-router';
 
 export default defineComponent({
   components: { SidebarItem },
@@ -44,21 +45,21 @@ export default defineComponent({
           title: '文章列表',
           path: '/article',
         },
-        {
-          icon: 'el-icon-s-grid',
-          title: '添加文章',
-          path: '/article/info',
-        },
+        // {
+        //   icon: 'el-icon-s-grid',
+        //   title: '添加文章',
+        //   path: '/article/info',
+        // },
         {
           icon: 'el-icon-s-promotion',
           title: '备忘录',
           path: '/envelope',
         },
-        {
-          icon: 'el-icon-s-promotion',
-          title: '添加备忘录',
-          path: '/envelope/info',
-        },
+        // {
+        //   icon: 'el-icon-s-promotion',
+        //   title: '添加备忘录',
+        //   path: '/envelope/info',
+        // },
         {
           icon: 'el-icon-edit-outline',
           title: '评论信息',
@@ -74,11 +75,18 @@ export default defineComponent({
           title: '设置',
           path: '/setting',
         },
-        {
-          icon: 'el-icon-s-tools',
-          title: 'Leave',
-        },
+        // {
+        //   icon: 'el-icon-s-tools',
+        //   title: 'Leave',
+        // },
       ],
+    });
+
+    const route = useRoute();
+
+    onMounted(() => {
+      // 刷新后停留在当前菜单
+      state.activeMenu = route.path;
     });
 
     return {
@@ -87,6 +95,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style>
-</style>

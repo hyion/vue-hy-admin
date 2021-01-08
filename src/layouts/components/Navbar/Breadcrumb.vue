@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive, toRefs } from 'vue';
-import { useRoute, RouteLocationMatched } from 'vue-router';
+import { useRoute, RouteLocationMatched, onBeforeRouteUpdate } from 'vue-router';
 
 interface Breadcrumb {
   levelList: RouteLocationMatched[];
@@ -25,6 +25,13 @@ export default defineComponent({
 
     onMounted(() => {
       getBreadcrumb();
+    });
+
+    onBeforeRouteUpdate((to) => {
+      let matched = to.matched.filter((item) => item.name);
+      state.levelList = matched.filter(
+        (item) => item.meta && item.meta.title && item.meta.breadcrumb !== false
+      );
     });
 
     const getBreadcrumb = () => {
