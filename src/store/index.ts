@@ -1,14 +1,4 @@
-// import { createStore } from 'vuex'
-// import user from './modules/user'
-
-// const app = createStore({
-//   modules: {
-//     user
-//   }
-// })
-
 // export default app
-
 import { readonly } from 'vue'
 import { createAction } from './action'
 import { createState } from './state'

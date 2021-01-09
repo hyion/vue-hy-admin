@@ -3,6 +3,7 @@ import { UserState } from './types'
 
 export const State: UserState = {
   token: '',
+  isOpened: false,
   user: {}
 }
 export function createState() {

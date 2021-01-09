@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>token: {{ token }}</p>
+    <p class="word-break: break-all;">token: {{ token }}</p>
   </div>
 </template>
 
