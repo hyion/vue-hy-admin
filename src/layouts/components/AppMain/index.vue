@@ -1,10 +1,6 @@
 <template>
   <section class="app-main">
-    <transition name="fade-transform" mode="out-in">
-      <!-- <keep-alive> -->
-      <router-view />
-      <!-- </keep-alive> -->
-    </transition>
+    <router-view />
   </section>
 </template>
 
@@ -21,5 +17,6 @@ export default defineComponent({});
   width: 100%;
   position: relative;
   overflow: hidden;
+  background-color: #f2f5f7;
 }
 </style>

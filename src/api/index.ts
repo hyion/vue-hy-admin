@@ -8,3 +8,11 @@ export function Login(data: LoginParams) {
     data: data
   })
 }
+
+export function GetArticles(data: any) {
+  return Service({
+    url: 'article',
+    method: 'get',
+    data: data
+  })
+}

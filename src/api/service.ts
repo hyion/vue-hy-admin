@@ -30,7 +30,7 @@ request.interceptors.response.use(
   response => {
     const res = response.data // res is my own data
     console.log('response--', response)
-    if (res.status == 1) {
+    if (res.status == 1 || res.status == 200) {
       return Promise.resolve(res)
     } else {
       ElMessage.error(res.message)
