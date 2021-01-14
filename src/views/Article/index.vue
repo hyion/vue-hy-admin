@@ -5,7 +5,7 @@
       justify="end"
       style="padding-bottom: 5px; border-bottom: 1px solid rgba(7, 17, 27, 0.1)"
     >
-      <el-button>添加文章</el-button>
+      <el-button @click="onCreate">添加文章</el-button>
     </el-row>
     <el-row style="margin-top: 10px">
       <el-table :data="datas" style="width: 100%">
@@ -57,9 +57,12 @@ export default defineComponent({
       });
     };
 
+    const onCreate = () => {};
+
     return {
       ...toRefs(state),
       currentChange,
+      onCreate,
     };
   },
 });
