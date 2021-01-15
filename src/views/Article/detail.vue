@@ -1,5 +1,10 @@
 <template>
-  <div>文章编辑</div>
+  <div class="article-detail">
+    <section>
+      <h1>江湖再会</h1>
+      <el-input placeholder="标题" v-model="formData.title" clearable> </el-input>
+    </section>
+  </div>
 </template>
 
 <script lang="ts">
@@ -8,7 +13,11 @@ import { GetArticles } from '/@/api';
 import { useRoute } from 'vue-router';
 export default defineComponent({
   setup() {
-    const state = reactive({});
+    const state = reactive({
+      formData: {
+        title: '',
+      },
+    });
     const route = useRoute();
 
     onMounted(() => {
