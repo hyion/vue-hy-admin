@@ -26,14 +26,18 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs, onMounted } from 'vue';
 import { GetArticles } from '/@/api';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
+  name: 'Article',
   setup() {
     const state = reactive({
       datas: [],
       pageSizeList: [10, 20, 50, 100],
       total: 0,
     });
+
+    const router = useRouter();
 
     onMounted(() => {
       getData();
@@ -57,7 +61,15 @@ export default defineComponent({
       });
     };
 
-    const onCreate = () => {};
+    const onCreate = () => {
+      router.push(`/article-detail`);
+      // router.push({
+      //   path: '/article-detail',
+      //   query: {
+      //     id:
+      //   }
+      // })
+    };
 
     return {
       ...toRefs(state),

@@ -45,6 +45,12 @@ export const constantRouterMap = [
         meta: {title: '文章列表', icon: 'dashboard', noCache: true}
       },
       {
+        path: 'article-detail',
+        component: () => import('/@/views/Article/detail.vue'),
+        name: 'ArticleDetail',
+        meta: {title: '文章详情', icon: 'dashboard', noCache: true}
+      },
+      {
         path: 'setting',
         component: loadView('Sett'),
         name: 'Setting',

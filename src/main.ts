@@ -9,12 +9,18 @@ import 'element-plus/lib/theme-chalk/index.css'
 // import 'dayjs/locale/zh-cn'
 import locale from 'element-plus/lib/locale/lang/zh-cn'
 import '/@/styles/index.scss'
+import VueMarkdownEditor from '@kangc/v-md-editor'
+import '@kangc/v-md-editor/lib/style/base-editor.css'
+import vuepressTheme from '@kangc/v-md-editor/lib/theme/vuepress.js'
+import '@kangc/v-md-editor/lib/theme/style/vuepress.css'
+VueMarkdownEditor.use(vuepressTheme)
 
 import '/@/router/interceptor'
 
 const app = createApp(App)
 setupRouter(app)
 app.use(ElementPlus, { size: 'small', locale })
+app.use(VueMarkdownEditor)
 // app.use(store)
 
 router.isReady().then(() => {

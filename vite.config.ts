@@ -45,7 +45,7 @@ const viteConfig: UserConfig = {
   },
 
   optimizeDeps: {
-    include: ['axios']
+    include: ['axios', '@kangc/v-md-editor/lib/theme/vuepress.js', '@kangc/v-md-editor/lib/theme/vuepress.js']
   },
   // proxy: createProxy(VITE_PROXY)
 }
