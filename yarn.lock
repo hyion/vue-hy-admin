@@ -42,10 +42,10 @@
   resolved "https://registry.npm.taobao.org/@braintree/sanitize-url/download/@braintree/sanitize-url-3.1.0.tgz#8ff71d51053cd5ee4981e5a501d80a536244f7fd"
   integrity sha1-j/cdUQU81e5JgeWlAdgKU2JE9/0=
 
-"@kangc/v-md-editor@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.npm.taobao.org/@kangc/v-md-editor/download/@kangc/v-md-editor-1.6.0.tgz#de5013695846792b0bdd4ac506144391ac4e72d9"
-  integrity sha1-3lATaVhGeSsL3UrFBhRDkaxOctk=
+"@kangc/v-md-editor@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.npm.taobao.org/@kangc/v-md-editor/download/@kangc/v-md-editor-2.2.0.tgz#01e2627d8ac1e340c486e4310b92c1f6bf3dffdc"
+  integrity sha1-AeJifYrB40DEhuQxC5LB9r89/9w=
   dependencies:
     "@vuepress/markdown" "^1.4.1"
     codemirror "^5.52.2"
@@ -753,9 +753,9 @@ co@^4.6.0:
   integrity sha1-bqa989hTrlTMuOR7+gvz+QMfsYQ=
 
 codemirror@^5.52.2:
-  version "5.59.1"
-  resolved "https://registry.npm.taobao.org/codemirror/download/codemirror-5.59.1.tgz?cache=0&sync_timestamp=1609414944187&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcodemirror%2Fdownload%2Fcodemirror-5.59.1.tgz#cd6465555a87f8a2243eb41ffb460c777e15212c"
-  integrity sha1-zWRlVVqH+KIkPrQf+0YMd34VISw=
+  version "5.59.2"
+  resolved "https://registry.npm.taobao.org/codemirror/download/codemirror-5.59.2.tgz#ee674d3a4a8d241af38d52afc482625ba7393922"
+  integrity sha1-7mdNOkqNJBrzjVKvxIJiW6c5OSI=
 
 collection-visit@^1.0.0:
   version "1.0.0"
@@ -1528,7 +1528,7 @@ fresh@~0.5.2:
 
 fs-extra@^7.0.1:
   version "7.0.1"
-  resolved "https://registry.npm.taobao.org/fs-extra/download/fs-extra-7.0.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ffs-extra%2Fdownload%2Ffs-extra-7.0.1.tgz#4f189c44aa123b895f722804f55ea23eadc348e9"
+  resolved "https://registry.npm.taobao.org/fs-extra/download/fs-extra-7.0.1.tgz?cache=0&sync_timestamp=1611075469998&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ffs-extra%2Fdownload%2Ffs-extra-7.0.1.tgz#4f189c44aa123b895f722804f55ea23eadc348e9"
   integrity sha1-TxicRKoSO4lfcigE9V6iPq3DSOk=
   dependencies:
     graceful-fs "^4.1.2"
@@ -1729,20 +1729,10 @@ he@^1.1.1, he@^1.2.0:
   resolved "https://registry.npm.taobao.org/he/download/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha1-hK5l+n6vsWX922FWauFLrwVmTw8=
 
-highlight.js-async-webpack@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.npm.taobao.org/highlight.js-async-webpack/download/highlight.js-async-webpack-1.0.4.tgz#c06b67bf99f049045d62b756e5855b0912ec616c"
-  integrity sha1-wGtnv5nwSQRdYrdW5YVbCRLsYWw=
-
 highlight.js@^10.5.0:
   version "10.5.0"
   resolved "https://registry.npm.taobao.org/highlight.js/download/highlight.js-10.5.0.tgz#3f09fede6a865757378f2d9ebdcbc15ba268f98f"
   integrity sha1-Pwn+3mqGV1c3jy2evcvBW6Jo+Y8=
-
-highlight.js@^9.11.0:
-  version "9.18.5"
-  resolved "https://registry.npm.taobao.org/highlight.js/download/highlight.js-9.18.5.tgz#d18a359867f378c138d6819edfc2a8acd5f29825"
-  integrity sha1-0Yo1mGfzeME41oGe38KorNXymCU=
 
 html-minifier@^4.0.0:
   version "4.0.0"
@@ -2419,15 +2409,6 @@ markdown-it@^8.4.1:
     linkify-it "^2.0.0"
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
-
-mavon-editor@^2.9.1:
-  version "2.9.1"
-  resolved "https://registry.npm.taobao.org/mavon-editor/download/mavon-editor-2.9.1.tgz?cache=0&sync_timestamp=1609158032195&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmavon-editor%2Fdownload%2Fmavon-editor-2.9.1.tgz#59adc7cbd1a1a71f691cf5b2a27e60ec3e6997cc"
-  integrity sha1-Wa3Hy9Ghpx9pHPWyon5g7D5pl8w=
-  dependencies:
-    highlight.js "^9.11.0"
-    highlight.js-async-webpack "^1.0.4"
-    xss "^1.0.6"
 
 mdurl@^1.0.1:
   version "1.0.1"
@@ -3460,9 +3441,9 @@ uc.micro@^1.0.1, uc.micro@^1.0.5:
   integrity sha1-nEEagCpAmpH8bPdAgbq6NLJEmaw=
 
 uglify-js@^3.5.1:
-  version "3.12.4"
-  resolved "https://registry.npm.taobao.org/uglify-js/download/uglify-js-3.12.4.tgz?cache=0&sync_timestamp=1609479632584&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fuglify-js%2Fdownload%2Fuglify-js-3.12.4.tgz#93de48bb76bb3ec0fc36563f871ba46e2ee5c7ee"
-  integrity sha1-k95Iu3a7PsD8NlY/hxukbi7lx+4=
+  version "3.12.5"
+  resolved "https://registry.npm.taobao.org/uglify-js/download/uglify-js-3.12.5.tgz?cache=0&sync_timestamp=1611097040812&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fuglify-js%2Fdownload%2Fuglify-js-3.12.5.tgz#83241496087c640efe9dfc934832e71725aba008"
+  integrity sha1-gyQUlgh8ZA7+nfyTSDLnFyWroAg=
 
 union-value@^1.0.0:
   version "1.0.1"

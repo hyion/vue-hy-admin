@@ -7,7 +7,7 @@
     </section>
     <section>
       <!-- <mavon-editor v-model="formData.content" /> -->
-      <!-- <v-md-editor v-model="formData.content" height="400px"></v-md-editor> -->
+      <v-md-editor v-model="formData.content" height="700px"></v-md-editor>
     </section>
   </div>
 </template>
@@ -16,12 +16,9 @@
 import { defineComponent, reactive, toRefs, onMounted } from 'vue';
 import { GetArticles } from '/@/api';
 import { useRoute } from 'vue-router';
-// import { mavonEditor } from 'mavon-editor';
-// import 'mavon-editor/dist/css/index.css';
 
 export default defineComponent({
   name: 'ArticleDetail',
-  // components: { mavonEditor },
   setup() {
     const state = reactive({
       formData: {
