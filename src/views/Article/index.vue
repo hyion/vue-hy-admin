@@ -9,9 +9,14 @@
     </el-row>
     <el-row style="margin-top: 10px">
       <el-table :data="datas" style="width: 100%">
-        <el-table-column prop="title" label="Title" min-width="180"> </el-table-column>
-        <el-table-column prop="time" label="Date" width="180"> </el-table-column>
-        <el-table-column prop="address" label="options" width="160"> </el-table-column>
+        <el-table-column type="index" width="50"></el-table-column>
+        <el-table-column prop="title" label="Title" min-width="180"></el-table-column>
+        <el-table-column prop="time" label="Date" width="180"></el-table-column>
+        <el-table-column prop="address" label="options" width="160">
+          <template #default="props">
+            <i class="el-icon-edit" @click="handleUpdate(props.row)"></i>
+          </template>
+        </el-table-column>
       </el-table>
       <el-pagination
         style="text-align: right; width: 100%; margin-top: 10px"
@@ -27,6 +32,10 @@
 import { defineComponent, reactive, toRefs, onMounted } from 'vue';
 import { GetArticles } from '/@/api';
 import { useRouter } from 'vue-router';
+
+interface Row {
+  id: string;
+}
 
 export default defineComponent({
   name: 'Article',
@@ -63,18 +72,17 @@ export default defineComponent({
 
     const onCreate = () => {
       router.push(`/article-detail`);
-      // router.push({
-      //   path: '/article-detail',
-      //   query: {
-      //     id:
-      //   }
-      // })
+    };
+
+    const handleUpdate = <T extends Row>(row: T) => {
+      router.push(`/article-detail/${row.id}`);
     };
 
     return {
       ...toRefs(state),
       currentChange,
       onCreate,
+      handleUpdate,
     };
   },
 });

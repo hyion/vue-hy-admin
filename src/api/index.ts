@@ -16,3 +16,10 @@ export function GetArticles(data: any) {
     data: data
   })
 }
+
+export function GetArticleDetail(data: any) {
+  return Service({
+    url: `article/${data}`,
+    method: 'get',
+  })
+}
