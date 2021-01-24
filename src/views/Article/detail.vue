@@ -37,7 +37,7 @@
         <section>
           <el-form-item>
             <div style="text-align: center">
-              <el-button type="primary" size="medium" style="width: 100%">SUBMIT</el-button>
+              <el-button type="primary" size="medium" style="width: 100%" @click="onSubmit">SUBMIT</el-button>
             </div>
           </el-form-item>
         </section>
@@ -88,9 +88,14 @@ export default defineComponent({
     const imgUpload = () => {
       console.log('imgUpload');
     };
+
+    const onSubmit = () =>{
+      console.log('onSubmit')
+    }
     return {
       ...toRefs(state),
       imgUpload,
+      onSubmit
     };
   },
 });

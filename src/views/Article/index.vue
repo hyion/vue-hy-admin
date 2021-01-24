@@ -15,6 +15,7 @@
         <el-table-column prop="address" label="options" width="160">
           <template #default="props">
             <i class="el-icon-edit" @click="handleUpdate(props.row)"></i>
+            <!-- <i class="el-icon-edit" @click="handleUpdate(props.row)"></i> -->
           </template>
         </el-table-column>
       </el-table>
