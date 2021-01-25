@@ -14,7 +14,7 @@
         <el-table-column prop="time" label="Date" width="180"></el-table-column>
         <el-table-column prop="address" label="options" width="160">
           <template #default="props">
-            <i class="el-icon-edit" @click="handleUpdate(props.row)"></i>
+            <i class="el-icon-edit icon-edit" @click="handleUpdate(props.row)"></i>
           </template>
         </el-table-column>
       </el-table>
@@ -25,6 +25,8 @@
       >
       </el-pagination>
     </el-row>
+
+    <!-- <router-view /> -->
   </div>
 </template>
 
@@ -71,11 +73,12 @@ export default defineComponent({
     };
 
     const onCreate = () => {
-      router.push(`/article-detail`);
+      router.push(`/article-detail/add`);
     };
 
     const handleUpdate = <T extends Row>(row: T) => {
       router.push(`/article-detail/${row.id}`);
+      // router.push(`/article/${row.id}`);
     };
 
     return {
@@ -93,5 +96,9 @@ export default defineComponent({
   margin: 20px;
   padding: 10px;
   background-color: #fff;
+  .icon-edit {
+    padding: 10px;
+    cursor: pointer;
+  }
 }
 </style>

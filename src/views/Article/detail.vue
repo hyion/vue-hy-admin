@@ -65,7 +65,7 @@ export default defineComponent({
     const route = useRoute();
 
     onMounted(() => {
-      if (route.params.id) {
+      if (route.params.id !== 'add') {
         getData();
       }
     });
