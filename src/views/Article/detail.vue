@@ -1,25 +1,25 @@
 <template>
   <div class="article-detail">
     <div class="container" v-loading="isLoading">
-      <el-form :model="formData" label-width="60px">
+      <el-form ref="formRef" :model="formData" :rules="rules" label-width="60px">
         <section class="header">
           <h1 style="margin-bottom: 10px">江湖再会~</h1>
-          <el-form-item label="标题:">
+          <el-form-item label="标题:" prop="title">
             <el-input placeholder="标题" v-model="formData.title" clearable> </el-input>
           </el-form-item>
         </section>
         <section class="custom-md">
-          <el-form-item label="内容:">
+          <el-form-item label="内容:" prop="content">
             <v-md-editor v-model="formData.content" :height="`${formData.height}px`"></v-md-editor>
           </el-form-item>
         </section>
         <div>
-          <el-form-item label="描述:">
+          <el-form-item label="描述:" prop="describe">
             <el-input placeholder="描述" v-model="formData.describe" clearable> </el-input>
           </el-form-item>
         </div>
         <section class="upload-box">
-          <el-form-item label="封面:">
+          <el-form-item label="封面:" prop="url">
             <el-upload
               class="upload-demo"
               :auto-upload="false"
@@ -37,7 +37,9 @@
         <section>
           <el-form-item>
             <div style="text-align: center">
-              <el-button type="primary" size="medium" style="width: 100%" @click="onSubmit">SUBMIT</el-button>
+              <el-button type="primary" size="medium" style="width: 100%" @click="onSubmit"
+                >SUBMIT</el-button
+              >
             </div>
           </el-form-item>
         </section>
@@ -47,13 +49,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs, onMounted } from 'vue';
+import { defineComponent, reactive, ref, unref, toRefs, onMounted } from 'vue';
 import { GetArticleDetail } from '/@/api';
 import { useRoute } from 'vue-router';
 
 export default defineComponent({
   name: 'ArticleDetail',
   setup() {
+    const formRef = ref<any>(null);
     const state = reactive({
       formData: {
         title: '',
@@ -63,6 +66,13 @@ export default defineComponent({
       isLoading: false,
     });
     const route = useRoute();
+
+    const rules = reactive({
+      title: [{ message: '请填写标题', trigger: 'blur' }],
+      content: [{ message: '请填写内容', trigger: 'blur' }],
+      describe: [{ message: '请填写描述', trigger: 'blur' }],
+      url: [{ message: '请填写上传背景封面', trigger: 'blur' }],
+    });
 
     onMounted(() => {
       if (route.params.id !== 'add') {
@@ -89,13 +99,17 @@ export default defineComponent({
       console.log('imgUpload');
     };
 
-    const onSubmit = () =>{
-      console.log('onSubmit')
-    }
+    const onSubmit = () => {
+      const form = unref(formRef);
+      if (!form) return;
+      console.log('onSubmit');
+    };
     return {
       ...toRefs(state),
+      formRef,
       imgUpload,
-      onSubmit
+      onSubmit,
+      rules,
     };
   },
 });
