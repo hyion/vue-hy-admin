@@ -53,15 +53,18 @@ export default defineComponent({
     const store = useStore();
     const router = useRouter();
 
-    const submit = () => {
+    const submit = async () => {
       const form = unref(formRef);
       if (!form) return;
-      Login(formData).then((res: any) => {
-        console.log(res);
-        const data = res.token;
-        store.action.updateToken(data);
-        router.push('/');
-        notification('success', '登录成功');
+      await form.validate((valid: boolean) => {
+        if (!valid) return;
+        Login(formData).then((res: any) => {
+          console.log(res);
+          const data = res.token;
+          store.action.updateToken(data);
+          router.push('/');
+          notification('success', '登录成功');
+        });
       });
     };
 

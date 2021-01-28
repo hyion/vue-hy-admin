@@ -13,7 +13,7 @@ export function GetArticles(data: any) {
   return Service({
     url: 'article',
     method: 'get',
-    data: data
+    data: data,
   })
 }
 
@@ -21,5 +21,13 @@ export function GetArticleDetail(data: any) {
   return Service({
     url: `article/${data}`,
     method: 'get',
+  })
+}
+
+export function CreateArticle(data: any) {
+  return Service({
+    url: 'article',
+    method: 'post',
+    data,
   })
 }

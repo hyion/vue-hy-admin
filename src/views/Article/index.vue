@@ -8,7 +8,7 @@
       <el-button @click="onCreate">添加文章</el-button>
     </el-row>
     <el-row style="margin-top: 10px">
-      <el-table :data="datas" style="width: 100%">
+      <el-table :data="datas" style="width: 100%" v-loading="loading">
         <el-table-column type="index" width="50"></el-table-column>
         <el-table-column prop="title" label="Title" min-width="180"></el-table-column>
         <el-table-column prop="time" label="Date" width="180"></el-table-column>
@@ -25,8 +25,6 @@
       >
       </el-pagination>
     </el-row>
-
-    <!-- <router-view /> -->
   </div>
 </template>
 
@@ -46,6 +44,7 @@ export default defineComponent({
       datas: [],
       pageSizeList: [10, 20, 50, 100],
       total: 0,
+      loading: false,
     });
 
     const router = useRouter();
@@ -64,12 +63,19 @@ export default defineComponent({
           page: 1,
         },
       };
-      GetArticles(query).then((res: any) => {
-        console.log(res);
-        const data = res.body;
-        state.total = data.total;
-        state.datas = data.data;
-      });
+      state.loading = true;
+      GetArticles(query)
+        .then((res: any) => {
+          console.log(res);
+          const data = res.body;
+          state.total = data.total;
+          state.datas = data.data;
+          state.loading = false;
+        })
+        .catch((e) => {
+          console.log(e);
+          state.loading = false;
+        });
     };
 
     const onCreate = () => {

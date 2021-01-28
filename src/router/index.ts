@@ -43,14 +43,6 @@ export const constantRouterMap = [
         component: loadView('Article'),
         name: 'Article',
         meta: {title: '文章列表', icon: 'dashboard', noCache: true},
-        // children: [
-        //   {
-        //     path: 'article/:id',
-        //     component: () => import('/@/views/Article/detail.vue'),
-        //     name: 'ArticleDetail',
-        //     meta: {title: '文章详情', icon: 'dashboard', noCache: true}
-        //   }
-        // ]
       },
       {
         path: 'article-detail/:id',

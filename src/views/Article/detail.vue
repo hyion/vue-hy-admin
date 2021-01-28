@@ -10,7 +10,7 @@
         </section>
         <section class="custom-md">
           <el-form-item label="内容:" prop="content">
-            <v-md-editor v-model="formData.content" :height="`${formData.height}px`"></v-md-editor>
+            <v-md-editor v-model="formData.content" :height="`${height}px`"></v-md-editor>
           </el-form-item>
         </section>
         <div>
@@ -19,7 +19,7 @@
           </el-form-item>
         </div>
         <section class="upload-box">
-          <el-form-item label="封面:" prop="url">
+          <el-form-item label="封面:">
             <el-upload
               class="upload-demo"
               :auto-upload="false"
@@ -50,8 +50,9 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref, unref, toRefs, onMounted } from 'vue';
-import { GetArticleDetail } from '/@/api';
+import { GetArticleDetail, CreateArticle } from '/@/api';
 import { useRoute } from 'vue-router';
+import { useMessage } from '/@/hooks/useMessage';
 
 export default defineComponent({
   name: 'ArticleDetail',
@@ -61,18 +62,22 @@ export default defineComponent({
       formData: {
         title: '',
         content: '',
-        height: window.innerHeight - 200,
+        describe: '',
+        url: '',
       },
+      height: window.innerHeight - 200,
       isLoading: false,
     });
     const route = useRoute();
 
     const rules = reactive({
-      title: [{ message: '请填写标题', trigger: 'blur' }],
-      content: [{ message: '请填写内容', trigger: 'blur' }],
-      describe: [{ message: '请填写描述', trigger: 'blur' }],
-      url: [{ message: '请填写上传背景封面', trigger: 'blur' }],
+      title: [{ required: true, message: '请填写标题', trigger: 'blur' }],
+      content: [{ required: true, message: '请填写内容', trigger: 'blur' }],
+      describe: [{ required: true, message: '请填写描述', trigger: 'blur' }],
+      url: [{ required: true, message: '请填写上传背景封面', trigger: 'blur' }],
     });
+
+    const { notification } = useMessage();
 
     onMounted(() => {
       if (route.params.id !== 'add') {
@@ -99,17 +104,24 @@ export default defineComponent({
       console.log('imgUpload');
     };
 
-    const onSubmit = () => {
+    const onSubmit = async () => {
       const form = unref(formRef);
       if (!form) return;
-      console.log('onSubmit');
+      await form.validate((valid: boolean) => {
+        if (!valid) return;
+        console.log(state.formData);
+        CreateArticle(state.formData).then((res) => {
+          console.log(res);
+          notification('success', '创建成功');
+        });
+      });
     };
     return {
       ...toRefs(state),
       formRef,
+      rules,
       imgUpload,
       onSubmit,
-      rules,
     };
   },
 });
