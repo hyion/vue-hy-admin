@@ -5,7 +5,7 @@ import type { AppRouteRecordRaw } from './types'
 import { scrollBehavior } from './scrollBehavior'
 
 export const LAYOUT = () => import('/@/layouts/index.vue');
-const loadView = (view: string) => (): any => import(`/@/views/${view}/index.vue`);
+const loadView = (view: string) => import(`/@/views/${view}/index.vue`);
 
 export const hashRouter = createWebHashHistory()
 

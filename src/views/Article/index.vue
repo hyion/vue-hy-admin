@@ -36,11 +36,17 @@ import { useRouter } from 'vue-router';
 interface Row {
   id: string;
 }
+interface ArticleState {
+  datas: any[];
+  pageSizeList: number[];
+  total: number;
+  loading: boolean;
+}
 
 export default defineComponent({
   name: 'Article',
   setup() {
-    const state = reactive({
+    const state = reactive<ArticleState>({
       datas: [],
       pageSizeList: [10, 20, 50, 100],
       total: 0,

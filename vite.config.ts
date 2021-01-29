@@ -16,7 +16,8 @@ const viteEnv = loadEnv()
 
 const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_DROP_CONSOLE, VITE_DYNAMIC_IMPORT } = viteEnv
 
-const root: string = process.cwd() // 当前工作目录
+/**当前工作目录 */
+const root: string = process.cwd()
 
 const resolvers: Resolver[] = []
 
