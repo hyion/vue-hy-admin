@@ -1,3 +1,9 @@
 @import './variable';
 @import './common.scss';
 @import './sidebar.scss';
+
+.custom-space {
+  margin: 20px;
+  padding: 10px;
+  background-color: #fff;
+}

@@ -31,3 +31,10 @@ export function CreateArticle(data: any) {
     data,
   })
 }
+
+export function GetComment() {
+  return Service({
+    url: 'comment',
+    method: 'get',
+  })
+}

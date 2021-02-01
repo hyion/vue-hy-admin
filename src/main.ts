@@ -17,11 +17,20 @@ VueMarkdownEditor.use(vuepressTheme)
 
 import '/@/router/interceptor'
 
+// 加载公共组件
+import components from '/@/components'
+
 const app = createApp(App)
 setupRouter(app)
 app.use(ElementPlus, { size: 'small', locale })
 app.use(VueMarkdownEditor)
-// app.use(store)
+// app.use(components)
+
+Object.keys(components).forEach((key: string) => {
+  const name = key.replace(/(\w)/, (v: string) => v.toUpperCase())
+  // @ts-ignore
+  app.component(name, components[key])
+})
 
 router.isReady().then(() => {
   app.mount('#app')

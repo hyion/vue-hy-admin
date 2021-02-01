@@ -12,7 +12,7 @@
         <el-table-column type="index" width="50"></el-table-column>
         <el-table-column prop="title" label="Title" min-width="180"></el-table-column>
         <el-table-column prop="time" label="Date" width="180"></el-table-column>
-        <el-table-column prop="address" label="options" width="160">
+        <el-table-column label="options" width="160">
           <template #default="props">
             <i class="el-icon-edit icon-edit" @click="handleUpdate(props.row)"></i>
           </template>
