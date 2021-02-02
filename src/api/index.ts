@@ -38,3 +38,11 @@ export function GetComment() {
     method: 'get',
   })
 }
+
+export function DeleteComment(data: any) {
+  return Service({
+    url: 'comment',
+    method: 'delete',
+    data,
+  })
+}

@@ -3,6 +3,7 @@ import { resolve } from 'path'
 import { createProxy } from './build/vite/proxy'
 import { loadEnv } from './build/utils'
 const pkg = require('./package.json')
+import svgLoader from 'vite-svg-loader'
 
 const pathResolve = (dir: string) => {
   return resolve(__dirname, '.', dir)
@@ -27,7 +28,6 @@ const viteConfig: UserConfig = {
   port: VITE_PORT,
   base: VITE_PUBLIC_PATH,
   esbuildTarget: 'es2019',
-
   terserOptions: {
     compress: {
       keep_infinity: true,
@@ -48,6 +48,7 @@ const viteConfig: UserConfig = {
   optimizeDeps: {
     include: ['axios', '@kangc/v-md-editor/lib/theme/vuepress.js']
   },
+  plugins: [svgLoader()],
   // proxy: createProxy(VITE_PROXY)
 }
 
