@@ -46,3 +46,18 @@ export function DeleteComment(data: any) {
     data,
   })
 }
+
+export function GetEnvelope() {
+  return Service({
+    url: 'envelope',
+    method: 'get'
+  })
+}
+
+export function DeleteEnvelope(data: any) {
+  return Service({
+    url: 'envelope',
+    method: 'get',
+    data
+  })
+}
