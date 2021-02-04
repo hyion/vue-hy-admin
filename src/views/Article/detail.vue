@@ -14,6 +14,18 @@
           </el-form-item>
         </section>
         <div>
+          <el-form-item label="时间:" prop="tmpTime">
+            <el-date-picker
+              v-model="tmpTime"
+              type="datetime"
+              format="YYYY-MM-DD HH:mm"
+              placeholder="选择日期时间"
+              @change="selectTime"
+            >
+            </el-date-picker>
+          </el-form-item>
+        </div>
+        <div>
           <el-form-item label="描述:" prop="describe">
             <el-input placeholder="描述" v-model="formData.describe" clearable> </el-input>
           </el-form-item>
@@ -51,8 +63,9 @@
 <script lang="ts">
 import { defineComponent, reactive, ref, unref, toRefs, onMounted } from 'vue';
 import { GetArticleDetail, CreateArticle } from '/@/api';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useMessage } from '/@/hooks/useMessage';
+import { parseTime } from '/@/hooks';
 
 export default defineComponent({
   name: 'ArticleDetail',
@@ -64,17 +77,21 @@ export default defineComponent({
         content: '',
         describe: '',
         url: '',
+        time: '',
       },
+      tmpTime: '',
       height: window.innerHeight - 200,
       isLoading: false,
     });
     const route = useRoute();
+    const router = useRouter();
 
     const rules = reactive({
       title: [{ required: true, message: '请填写标题', trigger: 'blur' }],
       content: [{ required: true, message: '请填写内容', trigger: 'blur' }],
       describe: [{ required: true, message: '请填写描述', trigger: 'blur' }],
       url: [{ required: true, message: '请填写上传背景封面', trigger: 'blur' }],
+      time: [{ required: true, message: '请选择发布时间', trigger: 'change' }],
     });
 
     const { notification } = useMessage();
@@ -109,19 +126,32 @@ export default defineComponent({
       if (!form) return;
       await form.validate((valid: boolean) => {
         if (!valid) return;
+        state.isLoading = true;
         console.log(state.formData);
-        CreateArticle(state.formData).then((res) => {
-          console.log(res);
-          notification('success', '创建成功');
-        });
+        CreateArticle(state.formData)
+          .then((res) => {
+            console.log(res);
+            state.isLoading = false;
+            notification('success', '创建成功');
+            router.push('/article');
+          })
+          .catch(() => {
+            state.isLoading = false;
+          });
       });
     };
+
+    const selectTime = (time: any) => {
+      state.formData.time = parseTime(time, '{y}/{m}/{d} {h}:{i}');
+    };
+
     return {
       ...toRefs(state),
       formRef,
       rules,
       imgUpload,
       onSubmit,
+      selectTime,
     };
   },
 });

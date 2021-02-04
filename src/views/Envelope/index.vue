@@ -26,6 +26,10 @@
         </template>
       </el-table-column>
     </el-table>
+    <!-- <div>
+      <span>{{ x }}</span>
+      /<span>{{ y }}</span>
+    </div> -->
   </div>
 </template>
 
@@ -34,6 +38,7 @@ import { defineComponent, reactive, toRefs, onMounted } from 'vue';
 import { GetEnvelope, DeleteEnvelope } from '/@/api';
 import { useMessage } from '/@/hooks/useMessage';
 import { ElMessageBox } from 'element-plus';
+import { useMouse } from '/@/hooks/useMouse';
 
 interface Row {
   id: string;
@@ -54,6 +59,7 @@ export default defineComponent({
     });
 
     const { $message } = useMessage();
+    const { x, y } = useMouse();
 
     onMounted(() => {
       getData();
@@ -114,6 +120,8 @@ export default defineComponent({
       ...toRefs(state),
       handleDelete,
       handleUpdate,
+      x,
+      y,
     };
   },
 });

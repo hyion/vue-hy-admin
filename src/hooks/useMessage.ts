@@ -1,6 +1,7 @@
 // import { reactive, onMounted, toRefs, } from 'vue'
 import { ElMessage, ElNotification } from 'element-plus'
 
+/** 自定义notification */
 const notification = (type: any, message: string) => {
   ElNotification({
     type: type,
@@ -10,6 +11,7 @@ const notification = (type: any, message: string) => {
   })
 }
 
+/** 自定义message */
 const $message = (type: any, msg: string) => {
   const options = {
     type: type,

@@ -9,14 +9,15 @@ export function Login(data: LoginParams) {
   })
 }
 
-export function GetArticles(data: any) {
+/** 获取文章列表 */
+export function GetArticles(data: number) {
   return Service({
-    url: 'article',
+    url: `article?page=${data}`,
     method: 'get',
-    data: data,
   })
 }
 
+/** 获取文章详情 */
 export function GetArticleDetail(data: any) {
   return Service({
     url: `article/${data}`,
@@ -24,6 +25,7 @@ export function GetArticleDetail(data: any) {
   })
 }
 
+/** 添加文章 */
 export function CreateArticle(data: any) {
   return Service({
     url: 'article',
@@ -32,6 +34,7 @@ export function CreateArticle(data: any) {
   })
 }
 
+/** 获取评论数据 */
 export function GetComment() {
   return Service({
     url: 'comment',
@@ -39,6 +42,7 @@ export function GetComment() {
   })
 }
 
+/** 删除评论 */
 export function DeleteComment(data: any) {
   return Service({
     url: 'comment',
@@ -47,6 +51,7 @@ export function DeleteComment(data: any) {
   })
 }
 
+/** 获取短语数据 */
 export function GetEnvelope() {
   return Service({
     url: 'envelope',
@@ -54,10 +59,19 @@ export function GetEnvelope() {
   })
 }
 
+/** 删除单个短语休息 */
 export function DeleteEnvelope(data: any) {
   return Service({
     url: 'envelope',
     method: 'get',
     data
+  })
+}
+
+/** 获取个人介绍页数据 */
+export function GetMyself() {
+  return Service({
+    url: 'myself',
+    method: 'get'
   })
 }
