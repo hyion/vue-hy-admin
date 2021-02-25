@@ -19,6 +19,23 @@
           </ul>
         </div>
       </section>
+      <section>
+        <h3>article</h3>
+        <!-- <div class="box">
+            <p>
+                <span class="total">{{$data.articleQty}}</span>
+                <span>篇</span>
+            </p>
+            <p>{{dateDiff($data.article.time)}} 发布了新的心情，继续加油哦！</p>
+        </div> -->
+        <div class="box">
+          <p>
+            <span class="total">0</span>
+            <span>篇</span>
+          </p>
+          <p>快来发布新文章啦!</p>
+        </div>
+      </section>
     </div>
   </div>
 </template>
