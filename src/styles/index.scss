@@ -1,10 +1,14 @@
 @import './variable';
 @import './common.scss';
 @import './sidebar.scss';
-
 .custom-space {
-  margin: 20px;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #fff;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+ul,
+li {
+    list-style: none;
 }
