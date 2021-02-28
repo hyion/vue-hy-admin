@@ -1,9 +1,9 @@
 <template>
   <div class="home custom-space">
-    <h2>
-      <span class="el-icon-magic-stick"></span>
-      万物皆有裂痕，那是光照进来的地方
-    </h2>
+    <div class="header">
+      <i class="el-icon-magic-stick"></i>
+      <span class="text">万物皆有裂痕，那是光照进来的地方</span>
+    </div>
     <div class="container">
       <section class="info">
         <h4>Hello，你好，我是谁！</h4>
@@ -19,8 +19,8 @@
           </ul>
         </div>
       </section>
-      <section>
-        <h3>article</h3>
+      <section class="article">
+        <h3>文章区</h3>
         <!-- <div class="box">
             <p>
                 <span class="total">{{$data.articleQty}}</span>
@@ -34,6 +34,32 @@
             <span>篇</span>
           </p>
           <p>快来发布新文章啦!</p>
+        </div>
+      </section>
+      <section class="info border-top">
+        <h3>评论区</h3>
+        <!-- <div class="box" v-if="$data.commentQty">
+            <p>
+                <span class="total">{{$data.commentQty}}</span>
+                <span>条</span>
+            </p>
+            <p>过去的时间里，收获了些许陌生的美好。</p>
+        </div> -->
+        <div class="box">
+          <p>
+            <span class="total">0</span>
+            <span>条</span>
+          </p>
+          <p>过去的时间里，收获了些许陌生的美好。</p>
+        </div>
+      </section>
+      <section class="border-top">
+        <h3>备忘录</h3>
+        <!-- <div class="envelope" v-if="$envelope && $envelope.length > 0">
+            <p v-for="(item, index) in $envelope" :key="index"><span>{{index + 1}}</span>{{item.content}}</p>
+        </div> -->
+        <div class="envelope box" style="height: 80%;">
+          <p>空空如也</p>
         </div>
       </section>
     </div>
@@ -61,37 +87,48 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+$border-1px: 1px solid rgba(7, 17, 27, .1);
+
 .home {
   position: relative;
   margin: 20px;
   padding: 10px;
-  h2 {
-      width: 100%;
-      font-size: 16px;
-      font-weight: 400;
-      margin: 10px 0 30px;
-      letter-spacing: 1px;
-      color: #0e8dff;
-      span {
-        color: #0e8bff;
-        font-size: 20px;
-      }
+  .header {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 10px 0 30px;
+    letter-spacing: 1px;
+    color: #0e8dff;
+    i {
+      color: #0e8bff;
+      font-size: 20px;
     }
+    .text {
+      border-bottom: $border-1px;
+    }
+  }
   .container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 
     section {
-      width: calc(50% - 15px);
+      width: calc(50%);
       display: inline-block;
       height: 300px;
-      box-shadow: 0 2px 20px #e0f0ff;
-      border-radius: 20px;
+      // box-shadow: 0 2px 20px #e0f0ff;
+      // border-radius: 20px;
       background: #fff;
       padding: 20px;
       margin-bottom: 24px;
       position: relative;
+      &.border-top {
+        border-top: $border-1px;
+      }
+      &.article {
+        margin-bottom: 0;
+      }
       h3 {
         font-size: 18px;
         color: #7fc3ff;
@@ -110,6 +147,8 @@ export default defineComponent({
         }
       }
       &.info {
+        border-right: $border-1px;
+        margin-bottom: 0;
         h4 {
           font-size: 16px;
           font-weight: 400;
@@ -145,7 +184,7 @@ export default defineComponent({
           margin: 10px 0;
           padding: 14px 15px 12px;
           border-radius: 10px;
-          border: 1px solid #edf3f9;
+          // border: 1px solid #edf3f9;
           li {
             position: relative;
             color: #5182b3;
@@ -156,6 +195,17 @@ export default defineComponent({
               margin-right: 4px;
             }
           }
+        }
+      }
+      .box{
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        height: calc(100% - 40px);
+        & > p:last-child{
+          margin-top: 30px;
+          color: #c4ccd4;
         }
       }
     }
