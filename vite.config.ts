@@ -1,26 +1,26 @@
-import type { UserConfig, Resolver } from 'vite'
-import { resolve } from 'path'
-import { createProxy } from './build/vite/proxy'
-import { loadEnv } from './build/utils'
-const pkg = require('./package.json')
-import svgLoader from 'vite-svg-loader'
+import type { UserConfig, Resolver } from 'vite';
+import { resolve } from 'path';
+import { createProxy } from './build/vite/proxy';
+import { loadEnv } from './build/utils';
+const pkg = require('./package.json');
+import svgLoader from 'vite-svg-loader';
 
 const pathResolve = (dir: string) => {
-  return resolve(__dirname, '.', dir)
-}
+  return resolve(__dirname, '.', dir);
+};
 
 const alias: Record<string, string> = {
-  '/@/': pathResolve('src')
-}
+  '/@/': pathResolve('src'),
+};
 
-const viteEnv = loadEnv()
+const viteEnv = loadEnv();
 
-const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_DROP_CONSOLE, VITE_DYNAMIC_IMPORT } = viteEnv
+const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_DROP_CONSOLE, VITE_DYNAMIC_IMPORT } = viteEnv;
 
 /**当前工作目录 */
-const root: string = process.cwd()
+const root: string = process.cwd();
 
-const resolvers: Resolver[] = []
+const resolvers: Resolver[] = [];
 
 const viteConfig: UserConfig = {
   root,
@@ -32,7 +32,7 @@ const viteConfig: UserConfig = {
     compress: {
       keep_infinity: true,
       drop_console: VITE_DROP_CONSOLE,
-    }
+    },
   },
 
   define: {
@@ -41,15 +41,19 @@ const viteConfig: UserConfig = {
 
   cssPreprocessOptions: {
     sass: {
-      includePaths: ['path/to/sass/deps']
-    }
+      includePaths: ['path/to/sass/deps'],
+    },
   },
 
   optimizeDeps: {
-    include: ['axios', '@kangc/v-md-editor/lib/theme/vuepress.js']
+    include: [
+      'axios',
+      '@kangc/v-md-editor/lib/theme/vuepress.js',
+      '@kangc/v-md-editor/lib/preview',
+    ],
   },
   plugins: [svgLoader()],
   // proxy: createProxy(VITE_PROXY)
-}
+};
 
-export default viteConfig
+export default viteConfig;
