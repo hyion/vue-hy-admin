@@ -15,7 +15,7 @@
 
 #### 示例
 
-![例图](https://github.com/hyion/vue-hy-admin/raw/master/src/assets/home.png)
+![例图](https://github.com/hyion/vue-hy-admin/blob/master/src/assets/home.png)
 
 #### 安装依赖
 
