@@ -1,7 +1,7 @@
 <template>
   <div class="articles">
     <el-row type="flex" justify="space-between">
-      <h2>短语列表</h2>
+      <h2>文章列表</h2>
       <div>
         <el-button style="margin-top: 10px" @click="onCreate">添加文章</el-button>
       </div>
