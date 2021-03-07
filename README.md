@@ -1,5 +1,3 @@
-# Hyion
-
 > 一个基于 Vue3.0 + Typescript + Vite + Axios + element-plus 管理后台
 
 ### 项目基础代码架构说明
